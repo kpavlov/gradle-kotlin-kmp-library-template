@@ -6,6 +6,18 @@ plugins {
 
 description = "Examples for Kotlin Multiplatform Library"
 
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
 dependencies {
     implementation(project(":lib"))
     implementation(libs.kotlinx.serialization.json)
