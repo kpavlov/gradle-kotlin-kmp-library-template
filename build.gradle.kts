@@ -26,20 +26,21 @@ dependencies {
     kover(project(":examples"))
 }
 
-koverReport {
-    defaults {
-        xml {
-            onCheck = true
+kover {
+    reports {
+
+        total {
+            xml
+            html
         }
-        html {
-            onCheck = true
-        }
-    }
-    verify {
-        rule {
-            bound {
-                minValue = 30
+
+        verify {
+            rule {
+                bound {
+                    minValue = 30
+                }
             }
         }
     }
 }
+

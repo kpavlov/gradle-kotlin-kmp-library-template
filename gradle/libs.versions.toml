@@ -6,7 +6,7 @@ junit = "5.12.2"
 kotest = "5.9.1"
 kotlin = "2.1.21"
 kotlinx-serialization = "1.8.1"
-kover = "0.7.5"
+kover = "0.9.1"
 mockk = "1.14.2"
 nexus-publish = "2.0.0"
 slf4j = "2.0.17"
@@ -32,5 +32,6 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "dokka" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+kover-aggregation = { id = "org.jetbrains.kotlinx.kover.aggregation", version.ref = "kover" }
 nexusPublish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus-publish" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }

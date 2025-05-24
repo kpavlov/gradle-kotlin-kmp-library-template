@@ -1,5 +1,4 @@
 plugins {
-    kotlin("multiplatform")
     kotlin("plugin.serialization")
     `kotlin-convention`
     `dokka-convention`
@@ -7,7 +6,7 @@ plugins {
     alias(libs.plugins.kover)
 }
 
-description = "Kotlin Multiplatform Library"
+description = "Sample Kotlin Multiplatform Library"
 
 kotlin {
 
