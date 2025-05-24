@@ -27,21 +27,15 @@ jobs:
         cache: gradle
 
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
+      uses: gradle/actions/setup-gradle@v4
       with:
         gradle-version: 8.14.1
 
     - name: Build with Gradle
-      run: gradle build
-
-    - name: Run tests
-      run: gradle test
-
-    - name: Run code coverage
-      run: gradle koverXmlReport
+      run: gradle build test koverXmlReport --no-daemon
 
     - name: Upload test results
-      if: always()
+      if: success() || failure() # always run even if the previous step fails
       uses: actions/upload-artifact@v4
       with:
         name: test-results-jdk-${{ matrix.java-version }}
