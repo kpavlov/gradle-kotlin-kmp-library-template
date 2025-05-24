@@ -6,6 +6,7 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.serialization.json.doubleOrNull
 
 class CalculatorExampleTest : FunSpec({
 
@@ -76,5 +77,51 @@ class CalculatorExampleTest : FunSpec({
         // Verify that the methods were called the expected number of times
         verify(exactly = 3) { calculatorMock.power(any(), 2.0) }
         verify(exactly = 3) { calculatorMock.add(any(), any()) }
+    }
+
+    test("process numbers from JSON") {
+        // Create a calculator instance
+        val calculator = Calculator()
+
+        // JSON string with numbers
+        val jsonString = """[10.5, 20.3, 15.7, 8.2, 12.9]"""
+
+        // Parse JSON string to JsonArray
+        val jsonArray = kotlinx.serialization.json.Json.parseToJsonElement(jsonString) as kotlinx.serialization.json.JsonArray
+
+        // Calculate sum of numbers from JSON
+        var jsonSum = 0.0
+        for (element in jsonArray) {
+            val number = (element as? kotlinx.serialization.json.JsonPrimitive)?.doubleOrNull
+            if (number != null) {
+                jsonSum = calculator.add(jsonSum, number)
+            }
+        }
+
+        // Verify the sum
+        jsonSum shouldBe 67.6
+    }
+
+    test("test all calculator operations") {
+        // Create a calculator instance
+        val calculator = Calculator()
+
+        // Test addition
+        calculator.add(5.0, 3.0) shouldBe 8.0
+
+        // Test subtraction
+        calculator.subtract(10.0, 4.0) shouldBe 6.0
+
+        // Test multiplication
+        calculator.multiply(7.0, 6.0) shouldBe 42.0
+
+        // Test division
+        calculator.divide(20.0, 5.0) shouldBe 4.0
+
+        // Test square root
+        calculator.sqrt(16.0) shouldBe 4.0
+
+        // Test power
+        calculator.power(2.0, 3.0) shouldBe 8.0
     }
 })
