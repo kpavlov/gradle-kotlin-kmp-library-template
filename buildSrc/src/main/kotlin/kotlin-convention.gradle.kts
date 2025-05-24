@@ -7,9 +7,6 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
-    }
     explicitApi()
 
     withSourcesJar(publish = true)

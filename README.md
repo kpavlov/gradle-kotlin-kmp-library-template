@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.1.21-blue.svg?logo=kotlin)](https://kotlinlang.org)
-[![Target JVM](https://img.shields.io/badge/JDK-17-green.svg)](https://jdk.java.net/17/)
+[![Target JVM](https://img.shields.io/badge/Target%20JDK-17-green.svg)](https://jdk.java.net/17/)
 [![Gradle](https://img.shields.io/badge/Gradle-8.14.1-green.svg)](https://gradle.org)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/kotlin-kmp-library/build.yml?branch=main)](https://github.com/yourusername/kotlin-kmp-library/actions)
 [![Documentation](https://img.shields.io/badge/Documentation-KDoc-blue)](https://yourusername.github.io/kotlin-kmp-library/)
