@@ -10,6 +10,8 @@
 
 A template project for creating Kotlin Multiplatform libraries with comprehensive testing and documentation setup.
 
+[![Buy me a Coffee](https://cdn.buymeacoffee.com/buttons/default-orange.png)](https://buymeacoffee.com/mailsk)
+
 ## Features
 
 - **Kotlin Multiplatform** support for JVM, with extensibility for other platforms

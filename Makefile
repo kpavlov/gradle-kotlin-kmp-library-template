@@ -17,8 +17,7 @@ format:
 # Lint the code
 .PHONY: lint
 lint:
-	./gradlew spotlessCheck
-	./gradlew detekt
+	./gradlew spotlessCheck detekt
 
 # Publish to Maven Local
 .PHONY: publish
