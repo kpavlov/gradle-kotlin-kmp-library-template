@@ -10,7 +10,7 @@ kover = "0.9.1"
 mockk = "1.14.2"
 nexus-publish = "2.0.0"
 slf4j = "2.0.17"
-spotless = "7.0.3"
+spotless = "7.0.4"
 
 [libraries]
 # Testing
