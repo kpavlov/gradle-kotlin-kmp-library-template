@@ -2,7 +2,7 @@
 assertj = "3.27.3"
 detekt = "1.23.8"
 dokka = "2.0.0"
-junit = "5.12.2"
+junit = "5.13.1"
 kotest = "5.9.1"
 kotlin = "2.1.21"
 kotlinx-serialization = "1.8.1"
