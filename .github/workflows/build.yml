@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         java-version:
+          - 17
           - 21
           - 24
       fail-fast: false
@@ -29,10 +30,10 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
       with:
-        gradle-version: 8.14.1
+        gradle-version: 8.14.2
 
     - name: Build with Gradle
-      run: gradle build test koverXmlReport --no-daemon
+      run: ./gradlew build test koverXmlReport --no-daemon
 
     - name: Upload test results
       if: success() || failure() # always run even if the previous step fails

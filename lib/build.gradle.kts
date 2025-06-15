@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.kover)
 }
 
-description = "Sample Kotlin Multiplatform Library"
-
 kotlin {
 
     sourceSets {
