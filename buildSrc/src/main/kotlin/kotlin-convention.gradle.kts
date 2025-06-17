@@ -1,3 +1,5 @@
+
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -40,6 +42,7 @@ tasks.withType<Test>().configureEach {
         events("passed", "skipped", "failed")
     }
     systemProperty("kotest.output.ansi", "true")
+    @Suppress("UnstableApiUsage")
     reports {
         junitXml.required.set(true)
         junitXml.includeSystemOutLog.set(true)

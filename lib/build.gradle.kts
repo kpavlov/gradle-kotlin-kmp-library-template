@@ -1,5 +1,5 @@
 plugins {
-    kotlin("plugin.serialization")
+    kotlin("plugin.serialization") version "2.1.21"
     `kotlin-convention`
     `dokka-convention`
     `publish-convention`
@@ -7,11 +7,11 @@ plugins {
 }
 
 kotlin {
-
     sourceSets {
         commonMain {
             dependencies {
                 implementation(libs.kotlinx.serialization.json)
+                implementation(libs.kotlinx.coroutines.core)
             }
         }
 
@@ -20,6 +20,7 @@ kotlin {
                 implementation(kotlin("test"))
                 implementation(libs.kotest.assertions.core)
                 implementation(libs.mockk)
+                implementation(libs.kotlinx.coroutines.test)
             }
         }
 
@@ -27,6 +28,7 @@ kotlin {
             dependencies {
                 // JVM-specific dependencies
                 runtimeOnly(libs.slf4j.simple)
+                runtimeOnly(libs.bytebuddy)
             }
         }
 

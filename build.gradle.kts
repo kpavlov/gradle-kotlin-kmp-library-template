@@ -2,9 +2,8 @@ plugins {
     base
     alias(libs.plugins.detekt)
     alias(libs.plugins.kover)
-    `dokka-convention`
     alias(libs.plugins.nexusPublish) // https://github.com/gradle-nexus/publish-plugin
-    kotlin("plugin.serialization") version libs.versions.kotlin apply false
+    `dokka-convention`
     signing
 }
 
@@ -28,7 +27,6 @@ dependencies {
 
 kover {
     reports {
-
         total {
             xml
             html

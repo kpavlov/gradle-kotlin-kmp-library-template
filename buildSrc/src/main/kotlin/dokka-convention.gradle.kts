@@ -25,13 +25,3 @@ tasks.withType<DokkaTask>().configureEach {
         )
     }
 }
-
-dokka {
-    dokkaSourceSets.configureEach {
-        sourceLink {
-            // Read docs for more details: https://kotlinlang.org/docs/dokka-gradle.html#source-link-configuration
-            remoteUrl("https://github.com/yourusername/kotlin-kmp-library/tree/main")
-            localDirectory.set(rootDir)
-        }
-    }
-}

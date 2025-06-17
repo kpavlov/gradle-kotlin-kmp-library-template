@@ -19,6 +19,13 @@ format:
 lint:
 	./gradlew spotlessCheck detekt
 
+# Generate documentation
+.PHONY: docs
+docs:
+	rm -rf docs/public
+	./gradlew :docs:dokkaGeneratePublicationHtml
+
+
 # Publish to Maven Local
 .PHONY: publish
 publish:

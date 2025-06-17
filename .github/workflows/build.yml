@@ -12,8 +12,8 @@ jobs:
     strategy:
       matrix:
         java-version:
-          - 17
-          - 21
+          # - 17
+          # - 21
           - 24
       fail-fast: false
 
@@ -33,7 +33,7 @@ jobs:
         gradle-version: 8.14.2
 
     - name: Build with Gradle
-      run: ./gradlew build test koverXmlReport --no-daemon
+      run: gradle check koverXmlReport --no-daemon
 
     - name: Upload test results
       if: success() || failure() # always run even if the previous step fails

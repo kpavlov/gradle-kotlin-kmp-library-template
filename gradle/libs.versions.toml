@@ -2,9 +2,9 @@
 assertj = "3.27.3"
 detekt = "1.23.8"
 dokka = "2.0.0"
-junit = "5.13.1"
 kotest = "5.9.1"
-kotlin = "2.1.21"
+bytebuddy = "1.17.5"
+kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.8.1"
 kover = "0.9.1"
 mockk = "1.14.2"
@@ -13,19 +13,16 @@ slf4j = "2.0.17"
 spotless = "7.0.4"
 
 [libraries]
-# Testing
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
+bytebuddy = { module = "net.bytebuddy:byte-buddy", version.ref = "bytebuddy" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-kotest-framework-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
-
-# Serialization
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

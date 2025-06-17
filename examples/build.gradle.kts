@@ -29,10 +29,7 @@ dependencies {
     testImplementation(libs.kotest.assertions.core)
     testImplementation(libs.mockk)
     testImplementation(libs.assertj.core)
-}
-
-application {
-    mainClass.set("com.example.library.examples.CalculatorExampleKt")
+    testRuntimeOnly(libs.bytebuddy)
 }
 
 tasks.withType<JavaExec>().configureEach {
