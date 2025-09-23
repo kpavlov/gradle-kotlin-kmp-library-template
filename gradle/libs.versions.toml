@@ -1,5 +1,5 @@
 [versions]
-assertj = "3.27.5"
+assertj = "3.27.6"
 detekt = "1.23.8"
 dokka = "2.0.0"
 kotest = "6.0.3"
