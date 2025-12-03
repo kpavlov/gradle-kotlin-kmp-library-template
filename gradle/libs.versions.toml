@@ -10,7 +10,7 @@ kover = "0.9.3"
 mockk = "1.14.6"
 nexus-publish = "2.0.0"
 slf4j = "2.0.17"
-spotless = "8.0.0"
+spotless = "8.1.0"
 
 [libraries]
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
