@@ -1,7 +1,7 @@
 [versions]
 assertj = "3.27.6"
 detekt = "1.23.8"
-dokka = "2.1.0"
+dokka = "2.2.0"
 kotest = "6.1.11"
 bytebuddy = "1.18.4"
 kotlinx-coroutines = "1.10.2"
