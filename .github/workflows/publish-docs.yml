@@ -31,8 +31,6 @@ jobs:
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v5
-      with:
-        gradle-version: 8.14.2
 
     - name: Generate KDoc documentation
       run: gradle clean :docs:dokkaGeneratePublicationHtml --no-daemon
