@@ -2,6 +2,7 @@ package com.example.library.examples
 
 import com.example.library.Calculator
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.doubles.plusOrMinus
 import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
@@ -99,7 +100,7 @@ class CalculatorExampleTest : FunSpec({
         }
 
         // Verify the sum
-        jsonSum shouldBe 67.6
+        jsonSum shouldBe (67.6 plusOrMinus 1e-9)
     }
 
     test("test all calculator operations") {

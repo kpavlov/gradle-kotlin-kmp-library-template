@@ -32,6 +32,10 @@ dependencies {
     testRuntimeOnly(libs.bytebuddy)
 }
 
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
+}
+
 tasks.withType<JavaExec>().configureEach {
     jvmArgs = listOf("-Xms512m", "-Xmx1024m")
 }
