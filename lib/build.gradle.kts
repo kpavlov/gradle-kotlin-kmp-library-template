@@ -1,9 +1,13 @@
 plugins {
-    kotlin("plugin.serialization") version "2.3.21"
-    `kotlin-convention`
-    `dokka-convention`
-    `publish-convention`
+    id("kotlin-convention")
+    id("detekt-convention")
+    id("dokka-convention")
+    id("knit-convention")
+    id("spotless-convention")
+    id("publish-convention")
+    id("netty-convention") // optional, if Netty is used
     alias(libs.plugins.kover)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -26,7 +30,6 @@ kotlin {
 
         jvmMain {
             dependencies {
-                // JVM-specific dependencies
                 runtimeOnly(libs.slf4j.simple)
                 runtimeOnly(libs.bytebuddy)
             }

@@ -1,15 +1,12 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import com.vanniktech.maven.publish.SourcesJar
+import org.gradle.jvm.tasks.Jar
 
 plugins {
     `maven-publish`
     id("com.vanniktech.maven.publish")
-}
-
-repositories {
-    gradlePluginPortal()
-    mavenCentral()
 }
 
 tasks.register<Jar>(name = "dokkaJavadocJar") {
@@ -19,6 +16,22 @@ tasks.register<Jar>(name = "dokkaJavadocJar") {
     dependsOn(javadocTask)
     from("build/dokka-module/javadoc")
     archiveClassifier.set("javadoc")
+}
+
+// Strip source-set prefixes (commonMain/, jvmMain/, etc.) from KMP sources jars
+afterEvaluate {
+    tasks.withType<Jar>().matching { it.name.endsWith("SourcesJar") }.configureEach {
+        eachFile {
+            val prefixes = listOf("commonMain/", "jvmMain/", "commonTest/", "jvmTest/")
+            for (prefix in prefixes) {
+                if (path.startsWith(prefix)) {
+                    path = path.removePrefix(prefix)
+                    break
+                }
+            }
+        }
+        includeEmptyDirs = false
+    }
 }
 
 // https://vanniktech.github.io/gradle-maven-publish-plugin/
@@ -38,7 +51,7 @@ configure<MavenPublishBaseExtension> {
     configure(
         KotlinMultiplatform(
             javadocJar = JavadocJar.Dokka("dokkaJavadocJar"),
-            sourcesJar = true,
+            sourcesJar = SourcesJar.Sources(),
         ),
     )
 

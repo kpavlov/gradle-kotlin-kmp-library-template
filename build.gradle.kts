@@ -1,23 +1,10 @@
 plugins {
     base
-    alias(libs.plugins.detekt)
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.detekt) apply false
     alias(libs.plugins.kover)
-    alias(libs.plugins.nexusPublish) // https://github.com/gradle-nexus/publish-plugin
-    `dokka-convention`
-    signing
-}
-
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
-
-// Common configuration for subprojects
-subprojects {
-    apply(plugin = "org.jetbrains.dokka")
-    apply(plugin = "org.jetbrains.dokka-javadoc")
-    apply(plugin = "com.diffplug.spotless")
 }
 
 dependencies {
@@ -31,7 +18,6 @@ kover {
             xml
             html
         }
-
         verify {
             rule {
                 bound {

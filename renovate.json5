@@ -21,7 +21,12 @@
         "patch",
         "digest"
       ],
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true,
+      "requiredStatusChecks": [
+        "build"
+      ]
     }
   ]
 }

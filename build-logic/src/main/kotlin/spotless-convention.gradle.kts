@@ -1,6 +1,8 @@
-import com.diffplug.gradle.spotless.SpotlessExtension
+plugins {
+    id("com.diffplug.spotless")
+}
 
-configure<SpotlessExtension> {
+spotless {
     ratchetFrom("origin/main")
 
     kotlinGradle {
@@ -8,8 +10,7 @@ configure<SpotlessExtension> {
     }
 
     kotlin {
-        ktfmt().kotlinlangStyle()
-        toggleOffOn()
+        ktlint()
     }
 
     format("misc") {

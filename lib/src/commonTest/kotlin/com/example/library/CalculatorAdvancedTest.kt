@@ -36,7 +36,8 @@ class CalculatorAdvancedTest {
         val calculator = Calculator()
 
         // Use power-assert to verify complex expressions
-        // Note: Power-assert transforms assertions at compile time to provide more detailed error messages
+        // Note: Power-assert transforms assertions at compile time
+        // to provide more detailed error messages
         val a = 5.0
         val b = 3.0
         val c = 2.0

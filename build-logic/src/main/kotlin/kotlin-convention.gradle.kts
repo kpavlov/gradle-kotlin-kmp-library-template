@@ -1,7 +1,6 @@
-
-
+import org.jetbrains.kotlin.gradle.dsl.JvmDefaultMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -10,8 +9,6 @@ plugins {
 
 kotlin {
     explicitApi()
-
-    withSourcesJar(publish = true)
 
     jvm {
         testRuns["test"].executionTask.configure {
@@ -23,13 +20,11 @@ kotlin {
 tasks.withType<KotlinCompile>().configureEach {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_17
-        languageVersion = KOTLIN_2_0
-        apiVersion = KOTLIN_2_0
-        freeCompilerArgs =
-            listOf(
-                "-Xjvm-default=all",
-                "-Wextra"
-            )
+        languageVersion = KOTLIN_2_3
+        apiVersion = KOTLIN_2_3
+        jvmDefault = JvmDefaultMode.ENABLE
+        extraWarnings = true
+        freeCompilerArgs = listOf()
     }
 }
 
@@ -38,8 +33,7 @@ tasks.withType<Test>().configureEach {
     maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).coerceAtLeast(1)
     forkEvery = 100
     testLogging {
-        showStandardStreams = true
-        events("passed", "skipped", "failed")
+        events("skipped", "failed")
     }
     systemProperty("kotest.output.ansi", "true")
     @Suppress("UnstableApiUsage")

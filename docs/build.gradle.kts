@@ -1,6 +1,8 @@
 plugins {
-    kotlin("jvm") apply false
-    `dokka-convention`
+    alias(libs.plugins.kotlin.jvm)
+    id("detekt-convention")
+    id("dokka-convention")
+    id("spotless-convention")
 }
 
 dependencies {
