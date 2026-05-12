@@ -1,61 +1,51 @@
-# Makefile for Kotlin Multiplatform Library
-
-# Default task
 .PHONY: all
-all: build
+all: format lint build apidocs
 
-# Build the project
 .PHONY: build
 build:
-	./gradlew build
+	@echo "Building..."
+	@./gradlew build koverVerify koverXmlReport koverHtmlReport
 
-# Format the code
-.PHONY: format
-format:
-	./gradlew spotlessApply
-
-# Lint the code
-.PHONY: lint
-lint:
-	./gradlew spotlessCheck detekt
-
-# Generate documentation
-.PHONY: docs
-docs:
-	rm -rf docs/public
-	./gradlew :docs:dokkaGeneratePublicationHtml
-
-
-# Publish to Maven Local
-.PHONY: publish
-publish:
-	./gradlew publishToMavenLocal
-
-# Run tests
-.PHONY: test
-test:
-	./gradlew test
-
-# Clean the project
 .PHONY: clean
 clean:
-	./gradlew clean
+	@echo "Cleaning..."
+	@./gradlew clean
+	@rm -rf kotlin-js-store
 
-# Generate documentation
-.PHONY: doc
-doc:
-	./gradlew :lib:dokkaGeneratePublicationHtml
+.PHONY: test
+test:
+	./gradlew --rerun-tasks check
 
-# Help
+.PHONY: apidocs
+apidocs:
+	@echo "Running Dokka..."
+	@rm -rf docs/public
+	@./gradlew :docs:dokkaGeneratePublicationHtml
+
+.PHONY: lint
+lint:
+	@./gradlew spotlessCheck \
+		:lib:detekt \
+		:examples:detekt \
+		:docs:detekt
+
+.PHONY: format
+format:
+	@./gradlew spotlessApply
+
+.PHONY: publish
+publish:
+	@./gradlew publishToMavenLocal
+
 .PHONY: help
 help:
 	@echo "Available targets:"
-	@echo "  all      - Default target, builds the project"
-	@echo "  build    - Build the project"
-	@echo "  format   - Format the code using Spotless"
-	@echo "  lint     - Run linting checks (Spotless, Detekt)"
+	@echo "  all      - Format, lint, build, and generate docs"
+	@echo "  build    - Build and run coverage verification"
+	@echo "  clean    - Clean build artifacts"
+	@echo "  test     - Run all tests"
+	@echo "  apidocs  - Generate Dokka HTML documentation"
+	@echo "  lint     - Run Spotless and Detekt checks"
+	@echo "  format   - Auto-format with Spotless"
 	@echo "  publish  - Publish to Maven Local"
-	@echo "  test     - Run tests"
-	@echo "  clean    - Clean the project"
-	@echo "  doc      - Generate KDoc documentation for the lib project"
 	@echo "  help     - Show this help message"

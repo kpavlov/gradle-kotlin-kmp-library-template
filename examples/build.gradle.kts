@@ -1,6 +1,9 @@
 plugins {
-    kotlin("jvm")
+    alias(libs.plugins.kotlin.jvm)
     application
+    id("detekt-convention")
+    id("dokka-convention")
+    id("spotless-convention")
     alias(libs.plugins.kover)
 }
 
@@ -19,11 +22,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 dependencies {
     implementation(project(":lib"))
     implementation(libs.kotlinx.serialization.json)
-
-    // Logging
     implementation(libs.slf4j.simple)
 
-    // Testing
     testImplementation(kotlin("test"))
     testImplementation(libs.kotest.runner.junit5)
     testImplementation(libs.kotest.assertions.core)

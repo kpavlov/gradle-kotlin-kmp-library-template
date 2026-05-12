@@ -1,0 +1,10 @@
+style:
+  MaxLineLength:
+    maxLineLength: 100
+  MagicNumber:
+    excludes:
+      - '**/test/**'
+      - '**/commonTest/**'
+      - '**/jvmTest/**'
+      - '**/examples/**'
+

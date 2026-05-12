@@ -1,44 +1,53 @@
 name: Publish Documentation
 
 on:
+  release:
+    types:
+      - created
   push:
     branches: [ main ]
-  # Allow running this workflow manually from the Actions tab
+    paths-ignore:
+      - AGENTS.md
   workflow_dispatch:
 
-jobs:
-  build-and-publish:
+env:
+  JVM_VERSION: 25
+  JVM_DISTRIBUTION: temurin
 
+jobs:
+  deploy:
     permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+      pages: write
+      id-token: write
 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
-    - name: Set up JDK 25
-      uses: actions/setup-java@v5
-      with:
-        java-version: '25'
-        distribution: 'temurin'
-        cache: gradle
+      - name: Set up JDK ${{ env.JVM_VERSION }}
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ env.JVM_VERSION }}
+          distribution: ${{ env.JVM_DISTRIBUTION }}
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v6
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          cache-provider: basic
 
-    - name: Generate KDoc documentation
-      run: gradle clean :docs:dokkaGeneratePublicationHtml --no-daemon
+      - name: Generate Dokka Site
+        run: ./gradlew clean :docs:dokkaGeneratePublicationHtml
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v5
-      with:
-        path: docs/public/apidocs
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs/public/apidocs
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

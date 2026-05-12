@@ -63,6 +63,7 @@ public class Calculator {
      * @param exponent The exponent.
      * @return The base raised to the power of the exponent.
      */
+    @Suppress("ReturnCount")
     public fun power(base: Double, exponent: Double): Double {
         // Simple implementation for integer exponents
         if (exponent == 0.0) return 1.0
