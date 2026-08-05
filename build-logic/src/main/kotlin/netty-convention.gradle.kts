@@ -4,7 +4,7 @@ plugins {
     id("org.gradle.base")
 }
 
-val nettyVersion = "4.2.16.Final"
+val nettyVersion = "4.2.17.Final"
 
 pluginManager.withPlugin("org.jetbrains.kotlin.multiplatform") {
     val kmp = extensions.getByType<KotlinMultiplatformExtension>()
