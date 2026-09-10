@@ -12,7 +12,7 @@ kover = "0.9.9"
 mockk = "1.14.11"
 nexus-publish = "2.0.0"
 slf4j = "2.0.19"
-spotless = "8.4.0"
+spotless = "8.10.2"
 vanniktech-maven-publish = "0.36.0"
 
 [libraries]
